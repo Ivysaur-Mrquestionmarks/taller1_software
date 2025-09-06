@@ -18,10 +18,18 @@ import jakarta.validation.Valid;
 public class gameControler {
 
        private static final List<Map<String, String>> games = new ArrayList<>(List.of(
-       Map.of("creator", "Juan", "teams", "Rojo y verde", "Fecha", "2do de julio", "name", "Primer juego de la primera ronda del torneo"),
-       Map.of("creator", "Juan", "teams", "azul y amrillo", "Fecha", "3ero de julio", "name", "segundo juego de la primera ronda del torneo"),
-       Map.of("creator", "Juan", "teams", "Gandores de la primera y segunda ronda del torneo", "Fecha", "2do de julio", "name", "primer juego de la seugunda ronda del torneo")
+       Map.of("id", "0", "creator", "Juan", "teams", "Rojo y verde", "Fecha", "2do de julio", "name", "Primer juego de la primera ronda del torneo"),
+       Map.of("id", "1", "creator", "Juan", "teams", "azul y amrillo", "Fecha", "3ero de julio", "name", "segundo juego de la primera ronda del torneo"),
+       Map.of("id", "2", "creator", "Juan", "teams", "Gandores de la primera y segunda ronda del torneo", "Fecha", "2do de julio", "name", "primer juego de la seugunda ronda del torneo")
    ));
+
+    @GetMapping("/juegos")
+   public String index(Model model) {
+       model.addAttribute("title", "Lista de juegos");
+       model.addAttribute("subtitle", "juegos");
+       model.addAttribute("juegos", games);
+       return "juego/index";
+   }   
 
     @GetMapping("/juegos/create")
    public String create(Model model) {
@@ -50,7 +58,7 @@ public class gameControler {
        return "redirect:/juegos/succes";
    }
      
-    @GetMapping("/juegos/save")
+    @GetMapping("/juegos/succes")
    public String succes(){
 
        return "juego/succes";
