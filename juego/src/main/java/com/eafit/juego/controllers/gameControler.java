@@ -18,9 +18,9 @@ import jakarta.validation.Valid;
 public class gameControler {
 
        private static final List<Map<String, String>> games = new ArrayList<>(List.of(
-       Map.of("creator", "Juan", "names-teams", "Rojo y verde", "Fecha", "2do de julio", "name", "Primer juego de la primera ronda del torneo"),
-       Map.of("creator", "Juan", "names-teams", "azul y amrillo", "Fecha", "3ero de julio", "name", "segundo juego de la primera ronda del torneo"),
-       Map.of("creator", "Juan", "names-teams", "Gandores de la primera y segunda ronda del torneo", "Fecha", "2do de julio", "name", "primer juego de la seugunda ronda del torneo")
+       Map.of("creator", "Juan", "teams", "Rojo y verde", "Fecha", "2do de julio", "name", "Primer juego de la primera ronda del torneo"),
+       Map.of("creator", "Juan", "teams", "azul y amrillo", "Fecha", "3ero de julio", "name", "segundo juego de la primera ronda del torneo"),
+       Map.of("creator", "Juan", "teams", "Gandores de la primera y segunda ronda del torneo", "Fecha", "2do de julio", "name", "primer juego de la seugunda ronda del torneo")
    ));
 
     @GetMapping("/juegos/create")
@@ -31,7 +31,7 @@ public class gameControler {
        return "juego/create";
    }
 
-    @PostMapping("/juegos/save")
+    @PostMapping("/juego/save")
    public String save(@Valid @ModelAttribute("gameForm") JuegoForm gameForm, BindingResult result, Model model) {
        if (result.hasErrors()) {
            model.addAttribute("title", "Create Product");
@@ -43,12 +43,18 @@ public class gameControler {
        newgame.put("id", String.valueOf(games.size() + 1));
        newgame.put("name", gameForm.getName());
        newgame.put("creator", gameForm.getCreator());
-       newgame.put("names-teams", gameForm.getTeams());
-       newgame.put("names-teams",  "Fecha: " + gameForm.getFecha());
+       newgame.put("teams", gameForm.getTeams());
+       newgame.put("Fecha",  "Fecha: " + gameForm.getFecha());
        games.add(newgame);
 
        return "redirect:/juegos/succes";
    }
      
+    @GetMapping("/juegos/save")
+   public String succes(){
+
+       return "juego/succes";
+   }
+
 }
 

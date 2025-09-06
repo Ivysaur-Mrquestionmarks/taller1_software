@@ -12,7 +12,7 @@ public class JuegoForm {
    @NotEmpty(message = "El nombre del creador es requerido")
    private String creator;
 
-   @NotEmpty(message = "El nombre de lso equipos es requerido")
+   @NotEmpty(message = "El nombre de los equipos es requerido")
    private String teams;   
 
    @NotNull(message = "La fecha es requerida")

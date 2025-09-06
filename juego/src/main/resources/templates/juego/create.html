@@ -27,13 +27,34 @@
                                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
                                </ul>
                            </div>
+
+                                <div class="buttons">
+                                    <div class="mb-2">
+                                    <label for="creator" class="form-label">Nombre del creador del juego:</label>
+                                    <input type="text" id="creator" class="form-control" th:field="*{creator}">
+                                </div>
+
                               <div class="buttons">
                                     <div class="mb-2">
                                     <label for="name" class="form-label">Nombre del juego:</label>
                                     <input type="text" id="name" class="form-control" th:field="*{name}">
                                 </div>
+
+                              <div class="buttons">
+                                    <div class="mb-2">
+                                    <label for="teams" class="form-label">Nombre del los equipos:</label>
+                                    <input type="text" id="teams" class="form-control" th:field="*{teams}">
+                                </div>
+
+
+                              <div class="buttons">
+                                    <div class="mb-2">
+                                    <label for="Fecha" class="form-label">Fecha de inicio:</label>
+                                    <input type="text" id="Fecha" class="form-control" th:field="*{Fecha}">
+                                </div>
+
                             </div>
-                           <input type="submit" class="btn btn-primary" value="Send">
+                           <input type="submit" class="btn btn btn-outline-danger active" value="Send">
                        </form>
                    </div>
                </div>
