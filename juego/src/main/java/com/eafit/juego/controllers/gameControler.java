@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
@@ -30,6 +31,21 @@ public class gameControler {
        model.addAttribute("juegos", games);
        return "juego/index";
    }   
+
+    @GetMapping("/juegos/{id}")
+   public String show(@PathVariable String id, Model model) {
+       int juegoId = Integer.parseInt(id);
+
+       if (juegoId < 0 || juegoId >= games.size()) {
+           return "redirect:/";
+       }
+
+       Map<String, String> game = games.get(juegoId);
+       model.addAttribute("title", game.get("name"));
+       model.addAttribute("subtitle", game.get("name") );
+       model.addAttribute("juego", game);
+       return "juego/show";
+   }  
 
     @GetMapping("/juegos/create")
    public String create(Model model) {
