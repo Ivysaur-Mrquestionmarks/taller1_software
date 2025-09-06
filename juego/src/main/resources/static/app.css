@@ -1,11 +1,11 @@
 bg-secondary {
- background-color: #2c3e50 !important;
+ background-color: #502c2c !important;
 }
 .copyright {
- background-color: #1a252f;
+ background-color: #000000;
 }
 .bg-primary {
- background-color: #1abc9c !important;
+ background-color: #ff1e00 !important;
 }
 nav{
  font-weight: 700;
@@ -14,3 +14,11 @@ nav{
  height: 18vw;
  object-fit: cover;
 }
+
+
+
+.pie {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} 
