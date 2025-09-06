@@ -1,12 +1,18 @@
 package com.eafit.juego.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class gameControler {
@@ -20,10 +26,29 @@ public class gameControler {
     @GetMapping("/juegos/create")
    public String create(Model model) {
        model.addAttribute("title", "Crear un juego");
+       model.addAttribute("subtitle", "Crear juegos");
        model.addAttribute("gameForm", new JuegoForm());
        return "juego/create";
    }
 
+    @PostMapping("/juegos/save")
+   public String save(@Valid @ModelAttribute("gameForm") JuegoForm gameForm, BindingResult result, Model model) {
+       if (result.hasErrors()) {
+           model.addAttribute("title", "Create Product");
+           return "juego/create";
+       }
+
+       // Simulación de guardar el producto en la lista (sin persistencia en DB)
+       Map<String, String> newgame = new HashMap<>();
+       newgame.put("id", String.valueOf(games.size() + 1));
+       newgame.put("name", gameForm.getName());
+       newgame.put("creator", gameForm.getCreator());
+       newgame.put("names-teams", gameForm.getTeams());
+       newgame.put("names-teams",  "Fecha: " + gameForm.getFecha());
+       games.add(newgame);
+
+       return "redirect:/juegos/succes";
+   }
      
 }
 

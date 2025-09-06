@@ -14,9 +14,9 @@ nav{
  height: 18vw;
  object-fit: cover;
 }
-
-
-
+body {
+  color: white;
+}
 .pie {
     position: fixed;
     bottom: 0;
