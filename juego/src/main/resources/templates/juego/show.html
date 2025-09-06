@@ -1,3 +1,15 @@
+
+<style>
+    div.Lbutton {
+
+        position: relative;        
+        right: 450px;
+        top: 20px
+        
+    }
+
+</style>
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -32,11 +44,21 @@
                         <p class="card-text" th:text="${juego.Fecha}"></p>
                         Creado por:
                         <p class="card-text" th:text="${juego.creator}"></p> 
+
+
                    </div>
                </div>
            </div>
        </div>
-   </div>
+                <div class="Lbutton">
+                    <div class="card-body text-center">
+                       <a th:href="@{/juegos/{id}/delete(id=${juego.id})}"  
+                          class="btn bg-primary text-white btn-lg"  
+                          th:text="Delete">
+                       </a>
+                   </div>
+                </div>       
+     </div>
 
    <div class="pie">
         <div th:replace="~{fragments/footer :: footer}"></div>

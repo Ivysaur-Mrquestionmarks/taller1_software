@@ -80,5 +80,12 @@ public class gameControler {
        return "juego/succes";
    }
 
+    @GetMapping("/juegos/{id}/delete")
+    public String delete(@PathVariable String id) {
+        int juegoId = Integer.parseInt(id);
+        games.remove(juegoId);
+        return "redirect:/juegos";
+    }
+
 }
 
